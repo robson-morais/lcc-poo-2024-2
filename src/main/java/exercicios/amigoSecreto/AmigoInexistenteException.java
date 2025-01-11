@@ -1,3 +1,4 @@
+package exercicios.amigoSecreto;
 
 public class AmigoInexistenteException extends Exception {
 

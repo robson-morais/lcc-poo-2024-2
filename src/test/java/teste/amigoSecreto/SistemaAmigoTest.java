@@ -1,27 +1,33 @@
+package teste.amigoSecreto;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import exercicios.amigoSecreto.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class SistemaAmigoTest {
 
 	SistemaAmigo sistema;
-	
+
 	@BeforeEach
-	void setUp()  {
-		this.sistema = new SistemaAmigo();
+	void setUp() {
+		List<Amigo> friendsTeste = new ArrayList<>();
+		List<Mensagem> mensagesTeste = new ArrayList<>();
+		this.sistema = new SistemaAmigo(mensagesTeste, friendsTeste);
 	}
+
 
 	@Test
 	void testSistemaAmigo() {
 		assertTrue(sistema.pesquisaTodasAsMensagens().isEmpty());
-		assertThrows(AmigoInexistenteException.class, 
-				()-> sistema.pesquisaAmigo("ayla@teste.com"));
+		assertThrows(AmigoInexistenteException.class, () -> sistema.pesquisaAmigo("ayla@teste.com"));
 	}
 
 	@Test
@@ -30,26 +36,26 @@ public class SistemaAmigoTest {
 			sistema.pesquisaAmigo("ayla@teste.com");
 			fail("Deveria falhar pois não existe ainda");
 		} catch (AmigoInexistenteException e) {
-			//Ok
+			System.out.println("Erro");
 		}
 		try {
 			sistema.cadastraAmigo("ayla", "ayla@teste.com");
 			Amigo a = sistema.pesquisaAmigo("ayla@teste.com");
 			assertEquals("ayla", a.getNome());
 			assertEquals("ayla@teste.com", a.getEmail());
-		} catch (AmigoJaExisteException | AmigoInexistenteException  e) {
+		} catch (AmigoJaExisteException | AmigoInexistenteException e) {
 			fail("Não deveria lançar exceção");
-		} 
-		
-		
+		}
 	}
+		
+
 
 	@Test
 	void testEnviarMensagemParaTodos() {
 		assertTrue(sistema.pesquisaTodasAsMensagens().isEmpty());
 		sistema.enviarMensagemParaTodos("texto", "ayla@dcx.ufpb.br", true);
 		List<Mensagem> mensagensAchadas = sistema.pesquisaTodasAsMensagens();
-		assertTrue(mensagensAchadas.size()==1);
+		assertTrue(mensagensAchadas.size() == 1);
 		assertTrue(mensagensAchadas.get(0).getEmailRemetente().equals("ayla@dcx.ufpb.br"));
 	}
 
@@ -96,6 +102,4 @@ public class SistemaAmigoTest {
 			fail("Não deveria lançar exceção");
 		}
 	}
-
-
 }

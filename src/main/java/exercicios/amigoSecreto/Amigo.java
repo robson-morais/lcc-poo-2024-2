@@ -1,3 +1,5 @@
+package exercicios.amigoSecreto;
+
 public class Amigo {
     
     private String nome;
@@ -34,4 +36,7 @@ public class Amigo {
         this.emailAmigoSorteado = newEmailAmigoSorteado;
     }
 
+    public String toString() {
+        return "Nome: " + this.nome + "\nEmail: " + this.email;
+    }
 }

@@ -1,3 +1,5 @@
+package exercicios.amigoSecreto;
+
 public abstract class Mensagem {
     
     private String texto;

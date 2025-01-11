@@ -1,6 +1,6 @@
-exercicios\vendas\Calcado.class
-exercicios\vendas\Produto.class
-exercicios\vendas\VendasInterface.class
 exercicios\vendas\Main.class
-exercicios\vendas\Roupa.class
+exercicios\vendas\VendasInterface.class
+exercicios\vendas\Calcado.class
 exercicios\vendas\Vendas.class
+exercicios\vendas\Produto.class
+exercicios\vendas\Roupa.class
