@@ -1,20 +1,21 @@
 package exercicios.vendas;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class Produto {
     protected String descricao;
     protected String categoria;
     protected String tamanho;
     protected double preco;
-    protected static int id;
+    protected UUID id;
 
     public Produto(String descricao, String categoria, String tamanho, double preco) {
         this.descricao = descricao;
         this.categoria = categoria;
         this.tamanho = tamanho;
         this.preco = preco;
-        this.id = getId();
+        this.id = UUID.randomUUID();
     }
 
     public Produto() {
@@ -47,13 +48,8 @@ public class Produto {
         this.preco = preco;
     }
 
-    private int geradorID (){
-        int num = (int) (Math.random()*10000);
-        return num;
-    }
-
-    public int getId() {
-        return geradorID();
+    public UUID getId() {
+        return id;
     }
 
     @Override
@@ -75,6 +71,6 @@ public class Produto {
         + "\nCategoria = " + categoria
         + "\nTamanho = " + tamanho
         + "\nPreço unitário = R$ " + preco
-        + "\nID = " + geradorID() + "]\n";
+        + "\nID = " + id + "]\n";
     }
 }
