@@ -1,11 +1,7 @@
 package teste.profs;
-import exercicios.profs.Dia;
-import exercicios.profs.Horario;
-import exercicios.profs.Sistema;
+import exercicios.profs.*;
+import exercicios.profs.exceptions.*;
 import org.junit.jupiter.api.Test;
-import exercicios.profs.exceptions.DisciplinaJaExisteE;
-import exercicios.profs.exceptions.ProfessorInexistenteE;
-import exercicios.profs.exceptions.ProfessorJaExisteE;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
