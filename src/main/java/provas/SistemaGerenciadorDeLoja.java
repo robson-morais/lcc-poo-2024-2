@@ -3,6 +3,7 @@ package provas;
 import provas.exceptions.RoupaInexistenteException;
 import provas.exceptions.RoupaJaExisteException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -16,12 +17,26 @@ public class SistemaGerenciadorDeLoja implements SistemaLojaRoupas {
 
     @Override
     public List<Roupa> pesquisaRoupasPortTamanho(Tamanho t) {
-        return List.of();
+
+        List<Roupa> roupas1 = new ArrayList<>();
+        for (Roupa r: this.roupas.values()) {
+            if (r.getTamanho() == t) {
+                roupas1.add(r);
+            }
+        }
+        return roupas1;
     }
 
     @Override
     public List<Roupa> pesquisaRoupasPorDescricao(String descricao) {
-        return List.of();
+
+        List<Roupa> roupas2 = new ArrayList<>();
+        for (Roupa r: this.roupas.values()) {
+            if (r.getDescricao().equalsIgnoreCase(descricao)){
+                roupas2.add(r);
+            }
+        }
+        return roupas2;
     }
 
     @Override
@@ -34,7 +49,6 @@ public class SistemaGerenciadorDeLoja implements SistemaLojaRoupas {
 
     @Override
     public void cadastraRoupa(String codigoRoupa, String descricao, Tamanho tamanho, int quantidade) throws RoupaJaExisteException {
-
         if (!this.roupas.containsKey(codigoRoupa)) {
             this.roupas.put(codigoRoupa, new Roupa(codigoRoupa, descricao, quantidade, tamanho));
         } else {
@@ -43,12 +57,24 @@ public class SistemaGerenciadorDeLoja implements SistemaLojaRoupas {
     }
 
     @Override
-    public void alterarEstoqueDeRoupa(String codigoRoupa) throws RoupaInexistenteException {
-
+    public void alterarEstoqueDeRoupa(String codigoRoupa, int quant) throws RoupaInexistenteException {
+        if (existe(codigoRoupa)) {
+            this.roupas.get(codigoRoupa).setQuantidade(quant);
+        } else {
+            throw new RoupaInexistenteException();
+        }
     }
 
     @Override
     public int pesquisaEstoqueRoupa(String codigoRoupa) throws RoupaInexistenteException {
-        return 0;
+        if (existe(codigoRoupa)) {
+            return this.roupas.get(codigoRoupa).getQuantidade();
+        } else {
+            throw new RoupaInexistenteException();
+        }
+    }
+
+    public boolean existe (String codigoRoupa) {
+        return this.roupas.containsKey(codigoRoupa);
     }
 }

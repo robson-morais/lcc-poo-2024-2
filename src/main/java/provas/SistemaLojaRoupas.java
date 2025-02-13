@@ -10,6 +10,6 @@ public interface SistemaLojaRoupas {
     public List<Roupa> pesquisaRoupasPorDescricao (String descricao);
     public Tamanho consultaTamanhoDaRoupa (String codigoRoupa) throws RoupaInexistenteException;
     public void cadastraRoupa(String codigoRoupa, String descricao, Tamanho tamanho, int quantidade) throws RoupaJaExisteException;
-    public void alterarEstoqueDeRoupa (String codigoRoupa) throws RoupaInexistenteException;
+    public void alterarEstoqueDeRoupa (String codigoRoupa, int novaQuantidade) throws RoupaInexistenteException;
     public int pesquisaEstoqueRoupa (String codigoRoupa) throws RoupaInexistenteException;
 }

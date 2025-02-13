@@ -7,6 +7,9 @@ import provas.exceptions.RoupaJaExisteException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 public class roupasTest {
 
     @Test
@@ -14,11 +17,18 @@ public class roupasTest {
         Map<String,Roupa> roupas = new HashMap<>();
         SistemaGerenciadorDeLoja sistema = new SistemaGerenciadorDeLoja(roupas);
         try {
-            sistema.cadastraRoupa("111", "Camisa 1",  Tamanho.G, 90);
-            sistema.consultaTamanhoDaRoupa("111");
-            System.out.println(sistema.consultaTamanhoDaRoupa("111"));
+            sistema.cadastraRoupa("1", "Camisa 1",  Tamanho.G, 90);
+            sistema.alterarEstoqueDeRoupa("1", 86);
+            sistema.cadastraRoupa("2", "Camisa 2",  Tamanho.M, 27);
+
+            System.out.println(sistema.pesquisaEstoqueRoupa("2"));
+            System.out.println("antes: " + roupas.get("1").getQuantidade());
+            System.out.println("depois: " + roupas.get("1").getQuantidade());
+
         } catch (RoupaJaExisteException | RoupaInexistenteException r) {
             r.printStackTrace();
         }
+
+        assertTrue(sistema.existe("1"));
     }
 }
