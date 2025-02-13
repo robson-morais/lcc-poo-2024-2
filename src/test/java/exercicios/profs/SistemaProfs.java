@@ -1,5 +1,4 @@
-package teste.profs;
-import exercicios.profs.*;
+package exercicios.profs;
 import exercicios.profs.exceptions.*;
 import org.junit.jupiter.api.Test;
 

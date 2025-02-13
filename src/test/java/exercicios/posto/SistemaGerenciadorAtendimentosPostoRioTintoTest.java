@@ -1,12 +1,6 @@
-package teste.posto;
+package exercicios.posto;
 
-import exercicios.posto.AtendimentoMedico;
-import exercicios.posto.CategoriaAtendimento;
-import exercicios.posto.Data;
-import exercicios.posto.SistemaGerenciadorAtendimentosPostoRioTinto;
 import org.junit.jupiter.api.Test;
-
-import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 

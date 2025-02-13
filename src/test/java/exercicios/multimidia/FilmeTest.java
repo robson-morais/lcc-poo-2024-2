@@ -1,4 +1,4 @@
-package teste.multimidia;
+package exercicios.multimidia;
 
 
 import aulas.multimidia.Filme;
